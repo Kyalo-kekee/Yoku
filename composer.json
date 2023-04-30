@@ -1,0 +1,19 @@
+{
+    "name": "isikekee/yoku",
+    "description": "Yoku is a fast secure php framework, engineered to meet most of your web programming needs",
+    "type": "project",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Yoku\\Ddd\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "IsiKekee",
+            "email": "kekekuza@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
