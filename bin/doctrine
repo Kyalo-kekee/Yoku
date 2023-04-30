@@ -1,13 +1,14 @@
 #!/usr/bin/env php
 <?php
-// bin/doctrine
+
 
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
+use Yoku\Ddd\Application\Services\EntityMangerService;
 
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
-$em = new \Yoku\Ddd\Application\Services\EntityMangerService();
+$em = new EntityMangerService();
 
 ConsoleRunner::run(
     new SingleManagerProvider($em->getEm())
