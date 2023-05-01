@@ -11,5 +11,5 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 $em = new EntityMangerService();
 
 ConsoleRunner::run(
-    new SingleManagerProvider($em->getEm())
+    new SingleManagerProvider($em->getEntityManager())
 );

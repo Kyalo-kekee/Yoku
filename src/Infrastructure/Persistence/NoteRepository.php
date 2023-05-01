@@ -3,26 +3,36 @@
 namespace Yoku\Ddd\Infrastructure\Persistence;
 
 
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Yoku\Ddd\Domain\Entity\Note;
 use Yoku\Ddd\Domain\Repository\NoteRepositoryInterface;
 
 class NoteRepository implements NoteRepositoryInterface
 {
-    private $db; // database connection object
+    private EntityManagerInterface $db;
 
-    public function __construct($db)
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->db = $db;
+        $this->db = $entityManager;
     }
 
     public function save(Note $note): void
     {
-        $stmt = $this->db->prepare('INSERT INTO notes (id, title, content, created_at) VALUES (:id, :title, :content, :created_at)');
-        $stmt->execute([
-            ':id' => $note->getId(),
-            ':title' => $note->getTitle(),
-            ':content' => $note->getContent(),
-            ':created_at' => $note->getCreatedAt()->format('Y-m-d H:i:s'),
-        ]);
+       $this->db->persist($note);
+       $this->db->flush();
+    }
+
+    /**
+     * @throws OptimisticLockException
+     * @throws ORMException
+     */
+    public function delete($id): void
+    {
+       $note = $this ->db->find(Note::class,$id);
+
+       $this->db->remove($note);
+       $this->db->flush();
     }
 }

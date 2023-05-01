@@ -43,7 +43,7 @@ class EntityMangerService
     /**
      * @return EntityManager
      */
-    public function getEm(): EntityManager
+    public function getEntityManager(): EntityManager
     {
         return $this->em;
     }
