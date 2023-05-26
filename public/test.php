@@ -1,6 +1,6 @@
 <?php
 
-use Yoku\Ddd\Application\Services\EntityMangerService;
+use Yoku\Ddd\Application\Services\EntityManagerService;
 use Yoku\Ddd\Application\Services\NoteService;
 use Yoku\Ddd\Infrastructure\Persistence\NoteRepository;
 
@@ -17,7 +17,7 @@ $content = $argv[4];
  * Doctrine ORM
  * Get the entity manager
  * */
-$entityManager = new EntityMangerService();
+$entityManager = new EntityManagerService();
 $em = $entityManager ->getEntityManager();
 
 /*

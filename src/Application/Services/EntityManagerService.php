@@ -7,7 +7,7 @@ use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
-use Yoku\Ddd\Application\Config\DatabaseConfiguration;
+use Yoku\Ddd\Application\Config\Database;
 
 
 class EntityMangerService
@@ -24,11 +24,11 @@ class EntityMangerService
             isDevMode: true);
 
         $connectionParams = array(
-            'dbname' =>  DatabaseConfiguration::DB_NAME,
-            'user' => DatabaseConfiguration::DB_USER,
-            'password' => DatabaseConfiguration::DB_PASSWORD,
-            'host' => DatabaseConfiguration::DB_HOST,
-            'driver' => DatabaseConfiguration::DB_DRIVER,
+            'dbname' =>  Database::DB_NAME,
+            'user' => Database::DB_USER,
+            'password' => Database::DB_PASSWORD,
+            'host' => Database::DB_HOST,
+            'driver' => Database::DB_DRIVER,
         );
 
         try{
